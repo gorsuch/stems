@@ -1,0 +1,5 @@
+{ "ami"                       : "ami-1634de7f",
+  "instance_type"             : "t1.micro",
+  "key_name"                  : "default"
+}
+
