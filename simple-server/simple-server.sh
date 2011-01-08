@@ -1,5 +1,6 @@
 #!/bin/bash
 
+aptitude update
 declare -ar packages=( git-core
                        irb ruby rubygems1.8 ruby1.8-dev
                        libopenssl-ruby libjson-ruby )
