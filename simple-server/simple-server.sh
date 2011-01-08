@@ -6,4 +6,4 @@ declare -ar packages=( git-core
                        libopenssl-ruby )
 aptitude install --assume-yes "${packages[@]}"
 
-gem install chef --version 0.9.12
+gem install chef --version 0.9.12 --no-ri --no-rdoc
