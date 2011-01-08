@@ -7,3 +7,6 @@ declare -ar packages=( git-core
 aptitude install --assume-yes "${packages[@]}"
 
 gem install chef --version 0.9.12 --no-ri --no-rdoc
+
+# doing this so we at least know that all of the install are complete. 
+halt
