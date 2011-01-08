@@ -11,4 +11,4 @@ gem install chef --version 0.9.12 --no-ri --no-rdoc
 export PATH=$PATH:/var/lib/gems/1.8/bin
 
 # doing this so we at least know that all of the install are complete. 
-halt
+# halt
