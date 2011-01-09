@@ -1,7 +1,4 @@
-#!/bin/bash
-
-set -o
-set -x
+#!/bin/bash -x
 
 function userdata() {
 	aptitude update
