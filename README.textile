@@ -21,3 +21,8 @@ export AWS_SECRET_ACCESS_KEY=your_secret_key
 p. Finally, run the following to get things going:
 
 pre. stem launch graphite-server/graphite-server.json graphite-server 
+
+h2. Caveats
+
+* default 'ubuntu' user is still in place.  Might not want that for your production systems.
+* chef-solo configuration data is stored in /home/ubuntu, which is suboptimal
