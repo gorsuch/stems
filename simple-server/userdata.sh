@@ -19,7 +19,7 @@ function userdata() {
 	export RUBYOPT="-Ku -rubygems"
 
 	git clone git://github.com/gorsuch/sandbox_cookbooks.git /tmp/sandbox_cookbooks
-	chef-solo -c /ubuntu/solo.rb -j /ubuntu/node.json
+	chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json
 }
 
 userdata >> /var/log/userdata.log 2>&1
