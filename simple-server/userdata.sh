@@ -12,10 +12,14 @@ function userdata() {
 
 	gem install chef --version 0.9.12 --no-ri --no-rdoc
 
-	git clone git://github.com/gorsuch/sandbox_cookbooks.git /tmp/sandbox_cookbooks
-
 	cp packet/etc/profile.d/ruby.sh /etc/profile.d/ruby.sh
 	cp packet/ubuntu/* /home/ubuntu
+	
+	export PATH="$PATH:/var/lib/gems/1.8/bin"
+	export RUBYOPT="-Ku -rubygems"
+
+	git clone git://github.com/gorsuch/sandbox_cookbooks.git /tmp/sandbox_cookbooks
+	chef-solo -c /ubuntu/solo.rb -j /ubuntu/node.json
 }
 
 userdata >> /var/log/userdata.log 2>&1
