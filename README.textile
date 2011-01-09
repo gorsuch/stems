@@ -22,6 +22,16 @@ p. Finally, run the following to get things going:
 
 pre. stem launch graphite-server/graphite-server.json graphite-server 
 
+Use the following to find the IP address of your new instance:
+
+pre. stem list
+
+Connect to that instance via SSH to manage it.  
+
+To access the web interface, set your client computer's /etc/hosts so that 'graphite' maps to instance's IP.
+
+Visit http://graphite to see it in action.
+
 h2. Caveats
 
 * default 'ubuntu' user is still in place.  Might not want that for your production systems.
