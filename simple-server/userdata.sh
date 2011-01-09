@@ -18,4 +18,4 @@ function userdata() {
 	cp packet/ubuntu/* /home/ubuntu
 }
 
-userdata > /var/log/stem_launch.log 2>&1
+userdata >> /var/log/userdata.log 2>&1
