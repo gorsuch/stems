@@ -1,0 +1,22 @@
+h1. Graphite Server Stem
+
+graphite-server is a simple Stem package to quickly fabricate an Ubuntu 10.04 system running the "Graphite":http://graphite.wikidot.com/ trending package.
+
+h2. Configuration
+
+To get going, you'll want to take a look at graphite-server/graphite-server.json.  In particular, you may want to tweak 'instance_type' to use a larger image (such as 'm1.large').  Also look at 'key_name', and change it to match your private/public key pair name on the EC2 control panel.
+
+h2. Usage
+
+To launch a Graphite server, first install the stem gem:
+
+code. gem install stem
+
+Next, ensure that your AWS access keys are in place.  One simple method is to add the following to your .profile:
+
+code.. export AWS_ACCESS_KEY_ID=your_access_key
+export AWS_SECRET_ACCESS_KEY=your_secret_key
+
+p. Finally, run the following to get things going:
+
+code. stem launch graphite-server/graphite-server.json graphite-server 
