@@ -2,7 +2,9 @@
 
 function userdata() {
 	aptitude update
-	declare -ar packages=( git-core build-essential dh-make debhelper devscripts )
+	declare -ar packages=( git-core 
+		build-essential dh-make debhelper devscripts 
+		quilt )
 	aptitude install --assume-yes "${packages[@]}"
 }
 
