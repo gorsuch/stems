@@ -1,4 +1,4 @@
-{ "ami"                       : "ami-1634de7f",
+{ "ami"                       : "ami-4a0df923",
   "instance_type"             : "t1.micro",
   "key_name"                  : "default"
 }
