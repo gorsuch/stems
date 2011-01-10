@@ -4,7 +4,7 @@ function userdata() {
 	aptitude update
 	declare -ar packages=( git-core 
 		build-essential dh-make debhelper devscripts 
-		quilt )
+		quilt cdbs )
 	aptitude install --assume-yes "${packages[@]}"
 }
 
