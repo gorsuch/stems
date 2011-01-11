@@ -1,0 +1,3 @@
+cd /home/ubuntu/sandbox_cookbooks
+git update
+chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json

@@ -1,1 +1,1 @@
-cookbook_path "/tmp/sandbox_cookbooks"
+cookbook_path "/home/ubuntu/sandbox_cookbooks"
