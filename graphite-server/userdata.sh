@@ -14,7 +14,7 @@ function userdata() {
 	. /etc/profile.d/ruby.sh
 	cp packet/ubuntu/* /home/ubuntu
 	
-	git clone git://github.com/gorsuch/sandbox_cookbooks.git /home/ubuntu/sandbox_cookbooks
+	git clone git://github.com/gorsuch/sandbox_cookbooks.git /root/chef/sandbox_cookbooks
 	chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json
 	
 	cp packet/etc/rc.local /etc/rc.local
