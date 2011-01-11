@@ -12,11 +12,11 @@ function userdata() {
 
 	cp packet/etc/profile.d/ruby.sh /etc/profile.d/ruby.sh
 	. /etc/profile.d/ruby.sh
-	cp packet/ubuntu/* /home/ubuntu
 	
 	mkdir -p /root/chef
+	cp packet/chef/* /root/chef
 	git clone git://github.com/gorsuch/sandbox_cookbooks.git /root/chef/cookbooks
-	chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json
+	chef-solo -c /root/chef/solo.rb -j /root/chef/node.json
 	
 	cp packet/etc/rc.local /etc/rc.local
 	echo END USERDATA
