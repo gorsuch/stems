@@ -2,7 +2,7 @@
 
 function custom() {
 	. /etc/profile.d/ruby.sh
-	cd /home/ubuntu/sandbox_cookbooks && git update && chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json
+	cd /home/ubuntu/sandbox_cookbooks && git pull && chef-solo -c /home/ubuntu/solo.rb -j /home/ubuntu/node.json
 }
 
 custom >> /var/log/rc.local.log 2>&1
