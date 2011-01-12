@@ -34,7 +34,4 @@ Visit http://graphite to see it in action.
 
 h2. Caveats
 
-* default 'ubuntu' user is still in place.  Might not want that for your production systems.
-* chef-solo configuration data is stored in /home/ubuntu, which is suboptimal
-
-This is not all.  Please see the caveats listed for the "required Chef cookbooks":https://github.com/gorsuch/sandbox_cookbooks.
+Please see the caveats listed for the "required Chef cookbooks":https://github.com/gorsuch/sandbox_cookbooks.
