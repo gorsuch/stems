@@ -20,7 +20,7 @@ export AWS_SECRET_ACCESS_KEY=your_secret_key
 
 p. Finally, run the following to get things going:
 
-pre. stem launch graphite-server/graphite-server.json graphite-server 
+pre. stem launch graphite-server/graphite-server.json graphite-server/userdata.sh
 
 Use the following to find the IP address of your new instance:
 
@@ -28,9 +28,7 @@ pre. stem list
 
 Connect to that instance via SSH to manage it.  
 
-To access the web interface, set your client computer's /etc/hosts so that 'graphite' maps to instance's IP.
-
-Visit http://graphite to see it in action.
+To access the web interface, just connect to the instance IP via your web browser.
 
 h2. Caveats
 
