@@ -1,30 +1,23 @@
 #!/bin/bash -x
 
+export CHEF_VERSION=0.9.12
 export CHEF_ROOT=/root/chef
-export COOKBOOK_REPO=git://github.com/gorsuch/sandbox_cookbooks.git
+export COOKBOOKS_URL=https://s3.amazonaws.com/gorsuch-cookbooks/cookbooks.tar.gz
+export JSON_URL=https://s3.amazonaws.com/gorsuch-cookbooks/node.json
 
 function create_files() {
 mkdir -p $CHEF_ROOT
 
-cat <<EOF > $CHEF_ROOT/node.json
-{
-  "run_list": [ "recipe[graphite]", "recipe[collectd]", "recipe[collectd::graphite_integration]" ]
-}	
-EOF
-
 cat <<EOF > $CHEF_ROOT/solo.rb
 cookbook_path "$CHEF_ROOT/cookbooks"
+recipe_url "$COOKBOOKS_URL"
+json_attribs "$JSON_URL"
 EOF
 
 cat <<EOF > /etc/rc.local
 . /etc/profile.d/ruby.sh
 
-if [ ! -d /root/chef/cookbooks ]
-then
-  git clone $COOKBOOK_REPO $CHEF_ROOT/cookbooks
-fi
-
-cd $CHEF_ROOT/cookbooks && git pull && chef-solo -c $CHEF_ROOT/solo.rb -j $CHEF_ROOT/node.json
+chef-solo -c $CHEF_ROOT/solo.rb
 EOF
 
 cat <<EOF > /etc/profile.d/ruby.sh
@@ -36,11 +29,10 @@ EOF
 function userdata() {
 	echo BEGIN USERDATA
 	aptitude update
-	declare -ar packages=( git-core
-	                       irb ruby rubygems1.8 ruby1.8-dev
+	declare -ar packages=( irb ruby rubygems1.8 ruby1.8-dev
 	                       libopenssl-ruby )
 	aptitude install --assume-yes "${packages[@]}"
-	gem install chef --version 0.9.12 --no-ri --no-rdoc
+	gem install chef --version $CHEF_VERSION --no-ri --no-rdoc
 	create_files
 	/etc/rc.local
 	echo END USERDATA
