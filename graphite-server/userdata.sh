@@ -8,7 +8,7 @@ mkdir -p $CHEF_ROOT
 
 cat <<EOF > $CHEF_ROOT/node.json
 {
-  "run_list": [ "recipe[graphite]", "recipe[collectd]" ]
+  "run_list": [ "recipe[graphite]", "recipe[collectd]", "recipe[collectd::graphite_integration]" ]
 }	
 EOF
 
