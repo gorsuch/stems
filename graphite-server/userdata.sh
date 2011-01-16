@@ -3,9 +3,6 @@
 export CHEF_ROOT=/root/chef
 export COOKBOOK_REPO=git://github.com/gorsuch/sandbox_cookbooks.git
 
-# super ugly-formatted function to create our files.
-# since the files are small... we can include them inline and also template them via 
-# simple vars.
 function create_files() {
 mkdir -p $CHEF_ROOT
 
@@ -21,6 +18,12 @@ EOF
 
 cat <<EOF > /etc/rc.local
 . /etc/profile.d/ruby.sh
+
+if [ ! -d /root/chef/cookbooks ]
+then
+  git clone $COOKBOOK_REPO $CHEF_ROOT/cookbooks
+fi
+
 cd $CHEF_ROOT/cookbooks && git pull && chef-solo -c $CHEF_ROOT/solo.rb -j $CHEF_ROOT/node.json
 EOF
 
@@ -37,16 +40,9 @@ function userdata() {
 	                       irb ruby rubygems1.8 ruby1.8-dev
 	                       libopenssl-ruby )
 	aptitude install --assume-yes "${packages[@]}"
-
 	gem install chef --version 0.9.12 --no-ri --no-rdoc
-
 	create_files
-
-	. /etc/profile.d/ruby.sh
-
-	git clone $COOKBOOK_REPO $CHEF_ROOT/cookbooks
-	chef-solo -c $CHEF_ROOT/solo.rb -j $CHEF_ROOT/node.json
-	
+	/etc/rc.local
 	echo END USERDATA
 }
 	
